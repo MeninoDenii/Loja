@@ -1,0 +1,40 @@
+# Project: SISTEMAPDV
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -std=c++11
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o Cliente.o Peca.o Compra.o Shopping.o
+LINKOBJ  = main.o Cliente.o Peca.o Compra.o Shopping.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = SISTEMAPDV.exe
+CXXFLAGS = $(CXXINCS) -lws2_32
+CFLAGS   = $(INCS) -lws2_32
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+Cliente.o: Cliente.cpp
+	$(CPP) -c Cliente.cpp -o Cliente.o $(CXXFLAGS)
+
+Peca.o: Peca.cpp
+	$(CPP) -c Peca.cpp -o Peca.o $(CXXFLAGS)
+
+Compra.o: Compra.cpp
+	$(CPP) -c Compra.cpp -o Compra.o $(CXXFLAGS)
+
+Shopping.o: Shopping.cpp
+	$(CPP) -c Shopping.cpp -o Shopping.o $(CXXFLAGS)
